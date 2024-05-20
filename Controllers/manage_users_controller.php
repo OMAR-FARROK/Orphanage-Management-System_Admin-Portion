@@ -1,5 +1,4 @@
 <?php
-// Variable to store status message
 $statusMessage = '';
 
 function getUserById($conn, $user_id) {
@@ -13,7 +12,6 @@ function getUserById($conn, $user_id) {
     return ['user_id' => $user_id, 'username' => $username, 'email' => $email, 'role' => $role];
 }
 
-// Handling form submissions for adding, editing, and deleting users
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_user'])) {
         $username = $_POST['username'];
@@ -51,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetching all users from the database
 $result = $conn->query("SELECT user_id, username, email, role FROM Users");
 
 $editUser = null;

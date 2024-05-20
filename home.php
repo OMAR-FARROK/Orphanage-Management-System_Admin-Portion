@@ -1,17 +1,17 @@
 <?php
-include('navbar.php');
+include('Views/mnavbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Home - Orphanage Management System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('../img/2304.q894.003.jpg') no-repeat center center fixed;
+            background: url('img/2304.q894.003.jpg') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -107,6 +107,6 @@ include('navbar.php');
             </div>
         </div>
     </div>
-    <?php include('footer.php'); ?>
+    <?php include('Views/mfooter.php'); ?>
 </body>
 </html>

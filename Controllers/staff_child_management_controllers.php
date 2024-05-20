@@ -1,21 +1,18 @@
 <?php
 
 
-// Fetch all staff members
 $staffResult = $conn->query("SELECT user_id, username FROM Users WHERE role = 'Staff'");
 $staff = [];
 while ($row = $staffResult->fetch_assoc()) {
     $staff[] = $row;
 }
 
-// Fetch all children
 $childrenResult = $conn->query("SELECT child_id, first_name, last_name FROM Children");
 $children = [];
 while ($row = $childrenResult->fetch_assoc()) {
     $children[] = $row;
 }
 
-// Handle assigning, deleting, and editing assignments
 $statusMessage = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['assign_staff'])) {
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch all staff-child assignments
 $assignmentsResult = $conn->query("
     SELECT sa.assignment_id, sa.child_id, sa.staff_id, sa.assigned_at, c.first_name AS child_first_name, c.last_name AS child_last_name, u.username AS staff_username
     FROM StaffAssignments sa

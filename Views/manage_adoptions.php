@@ -259,5 +259,6 @@ include('../Controllers/manage_adoptions_controllers.php');
             return true;
         }
     </script>
+    <?php include('footer.php'); ?>
 </body>
 </html>

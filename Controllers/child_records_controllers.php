@@ -1,5 +1,4 @@
 <?php
-// Variable to store status message
 $statusMessage = '';
 
 function getChildById($conn, $child_id) {
@@ -7,7 +6,6 @@ function getChildById($conn, $child_id) {
     $stmt->bind_param("i", $child_id);
     $stmt->execute();
 
-    // Initialize the variables
     $child_id = $first_name = $last_name = $date_of_birth = $gender = $admission_date = null;
 
     $stmt->bind_result($child_id, $first_name, $last_name, $date_of_birth, $gender, $admission_date);
@@ -17,7 +15,6 @@ function getChildById($conn, $child_id) {
     return ['child_id' => $child_id, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'gender' => $gender, 'admission_date' => $admission_date];
 }
 
-// Handling form submissions for adding, editing, and deleting child records
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_child'])) {
         $first_name = $_POST['first_name'];
@@ -58,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetching all child records from the database
 $result = $conn->query("SELECT child_id, first_name, last_name, date_of_birth, gender, admission_date FROM Children");
 
 $editChild = null;

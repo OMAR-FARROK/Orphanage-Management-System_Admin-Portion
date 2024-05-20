@@ -1,12 +1,11 @@
 <?php
-// Fetch all users for the dropdown
+// for the dropdown
 $usersResult = $conn->query("SELECT user_id, username FROM Users WHERE user_id != " . $_SESSION['user_id']);
 $users = [];
 while ($row = $usersResult->fetch_assoc()) {
     $users[] = $row;
 }
 
-// Handle sending a message
 $statusMessage = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['send_message'])) {
@@ -24,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch all messages for the logged-in user
 $messagesResult = $conn->query("
     SELECT m.message_id, m.sender_id, m.receiver_id, m.message_text, m.sent_at, u.username AS sender_username
     FROM Messages m

@@ -1,9 +1,7 @@
 <?php
 
-// Variable to store status message
 $statusMessage = '';
 
-// Function to get all children
 function getChildren($conn) {
     $result = $conn->query("SELECT child_id, first_name, last_name FROM Children");
     $children = [];
@@ -13,13 +11,11 @@ function getChildren($conn) {
     return $children;
 }
 
-// Function to get an educational record by ID
 function getEducationalRecordById($conn, $record_id) {
     $stmt = $conn->prepare("SELECT record_id, child_id, school_name, grade, performance, extracurricular_activities, attendance, class FROM EducationalRecords WHERE record_id = ?");
     $stmt->bind_param("i", $record_id);
     $stmt->execute();
 
-    // Initialize the variables
     $record_id = $child_id = $school_name = $grade = $performance = $extracurricular_activities = $attendance = $class = null;
 
     $stmt->bind_result($record_id, $child_id, $school_name, $grade, $performance, $extracurricular_activities, $attendance, $class);
@@ -29,7 +25,6 @@ function getEducationalRecordById($conn, $record_id) {
     return ['record_id' => $record_id, 'child_id' => $child_id, 'school_name' => $school_name, 'grade' => $grade, 'performance' => $performance, 'extracurricular_activities' => $extracurricular_activities, 'attendance' => $attendance, 'class' => $class];
 }
 
-// Handling form submissions for adding, editing, and deleting educational records
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_record'])) {
         $child_id = $_POST['child_id'];
@@ -74,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetching all educational records from the database
 $result = $conn->query("SELECT record_id, child_id, school_name, grade, performance, extracurricular_activities, attendance, class FROM EducationalRecords");
 
 $editRecord = null;
@@ -82,6 +76,5 @@ if (isset($_GET['edit_record_id'])) {
     $editRecord = getEducationalRecordById($conn, $_GET['edit_record_id']);
 }
 
-// Fetching all children for the dropdown
 $children = getChildren($conn);
 ?>

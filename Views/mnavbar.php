@@ -8,7 +8,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         .navbar {
             width: 100%;
@@ -65,26 +65,26 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
     <div class="navbar">
         <div class="navbar-brand">
-            <a href="../home.php">Orphanage Management System</a>
+            <a href="home.php">Orphanage Management System</a>
         </div>
         <div class="navbar-links">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="../home.php">Home</a>
-                <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-                <a href="manage_users.php" class="nav-link">Manage Users</a>
-                <a href="child_records.php" class="nav-link">Child Records</a>
-                <a href="health_records.php" class="nav-link">Health Records</a>
-                <a href="educational_management.php" class="nav-link">Educational Management</a>
-                <a href="generate_reports.php" class="nav-link">Generate Reports</a>
-                <a href="messages.php" class="nav-link">Messages</a>
-                <a href="staff_child_management.php" class="nav-link">Staff Child Management</a>
-                <a href="manage_adoptions.php" class="nav-link">Manage Adoptions</a>
-                <a href="../Controllers/logout.php" class="nav-link">Logout</a>
+                <a href="home.php">Home</a>
+                <a href="Views/admin_dashboard.php" class="nav-link">Dashboard</a>
+                <a href="Views/manage_users.php" class="nav-link">Manage Users</a>
+                <a href="Views/child_records.php" class="nav-link">Child Records</a>
+                <a href="Views/health_records.php" class="nav-link">Health Records</a>
+                <a href="Views/educational_management.php" class="nav-link">Educational Management</a>
+                <a href="Views/generate_reports.php" class="nav-link">Generate Reports</a>
+                <a href="Views/messages.php" class="nav-link">Messages</a>
+                <a href="Views/staff_child_management.php" class="nav-link">Staff Child Management</a>
+                <a href="Views/manage_adoptions.php" class="nav-link">Manage Adoptions</a>
+                <a href="Controllers/logout.php" class="nav-link">Logout</a>
 
                 <a href="" class="nav-link"></a>
             <?php else: ?>
-                <a href="../home.php">Home</a>
-                <a href="login.php">Login</a>
+                <a href="home.php">Home</a>
+                <a href="Views/login.php">Login</a>
 
                 <a href="#" class="nav-link"></a>
             <?php endif; ?>

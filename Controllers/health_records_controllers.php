@@ -1,8 +1,6 @@
 <?php
-// Variable to store status message
 $statusMessage = '';
 
-// Function to get all children
 function getChildren($conn) {
     $result = $conn->query("SELECT child_id, first_name, last_name FROM Children");
     $children = [];
@@ -12,13 +10,11 @@ function getChildren($conn) {
     return $children;
 }
 
-// Function to get a health record by ID
 function getHealthRecordById($conn, $record_id) {
     $stmt = $conn->prepare("SELECT record_id, child_id, medical_history, vaccinations, treatments, last_checkup, next_appointment FROM HealthRecords WHERE record_id = ?");
     $stmt->bind_param("i", $record_id);
     $stmt->execute();
 
-    // Initialize the variables
     $record_id = $child_id = $medical_history = $vaccinations = $treatments = $last_checkup = $next_appointment = null;
 
     $stmt->bind_result($record_id, $child_id, $medical_history, $vaccinations, $treatments, $last_checkup, $next_appointment);
@@ -28,7 +24,6 @@ function getHealthRecordById($conn, $record_id) {
     return ['record_id' => $record_id, 'child_id' => $child_id, 'medical_history' => $medical_history, 'vaccinations' => $vaccinations, 'treatments' => $treatments, 'last_checkup' => $last_checkup, 'next_appointment' => $next_appointment];
 }
 
-// Handling form submissions for adding, editing, and deleting health records
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_record'])) {
         $child_id = $_POST['child_id'];
@@ -71,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetching all health records from the database
 $result = $conn->query("SELECT record_id, child_id, medical_history, vaccinations, treatments, last_checkup, next_appointment FROM HealthRecords");
 
 $editRecord = null;
@@ -79,6 +73,6 @@ if (isset($_GET['edit_record_id'])) {
     $editRecord = getHealthRecordById($conn, $_GET['edit_record_id']);
 }
 
-// Fetching all children for the dropdown
+// for the dropdown
 $children = getChildren($conn);
 ?>

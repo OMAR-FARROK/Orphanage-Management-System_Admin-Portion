@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Admin') {
     exit();
 }
 
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_adoption'])) {
         $child_id = $_POST['child_id'];
@@ -54,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch adoption records
 $adoptions = [];
 $result = $conn->query("SELECT adoptions.*, children.first_name, children.last_name FROM adoptions JOIN children ON adoptions.child_id = children.child_id");
 if ($result->num_rows > 0) {
@@ -63,7 +61,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Fetch children for the dropdown
 $children = [];
 $result = $conn->query("SELECT child_id, first_name, last_name FROM children");
 if ($result->num_rows > 0) {

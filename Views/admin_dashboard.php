@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Admin') {
 
 include('../Models/config.php');
 
-// Fetch the username of the logged-in admin
 $stmt = $conn->prepare("SELECT username FROM Users WHERE user_id = ?");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
